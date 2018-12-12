@@ -37,7 +37,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reglas = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed'
+        ];
+
+        $this->validate($request, $reglas);
+
+        $campos = $request->all();
+        $campos['password'] = bcrypt($request->password);
+        $campos['verified'] = User::USUARIO_NO_VERIFICADO;
+        $campos['verification_token'] = User::generarVerificacionToken();
+        $campos['admin'] = User::USUARIO_NORMAL;
+
+        $usuario = User::create($campos);
+        return response()->json(['data' => $usuario], 201);
     }
 
     /**
@@ -48,7 +63,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $usuario = User::findOrFail($id);
+        return response()->json(['data' => $usuario], 200);
     }
 
     /**
