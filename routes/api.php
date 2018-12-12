@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,4 +15,5 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
-
+//Route::apiResource('patiends', 'Patient\PatientController', ['only' => ['index', 'store', 'destroy', 'show', 'update']]);
+Route::apiResource('patiends', 'Patient\PatientController');
