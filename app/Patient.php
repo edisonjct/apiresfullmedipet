@@ -9,6 +9,10 @@ class Patient extends Model
     const PRODUCTO_ACTIVO = '0';
     const PRODUCTO_INACTIVO = '1';
 
+    public $timestamps = false;
+
+    protected $table = 'paciente';
+
     protected $fillable = [
         'pacNombre',
         'pacSexo',
@@ -21,7 +25,11 @@ class Patient extends Model
         'pacRelimina',
         'pacElimina',
         'peloreja',
-        'pacUser'
+        'pacUser',
+        'pacEspecie',
+        'pacRaza',
+        'pacFechaNaci',
+        'cliID'
     ];
 
 
