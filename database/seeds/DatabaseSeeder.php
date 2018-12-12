@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::truncate();
-        $cantidadusuarios = 20000;
+        $cantidadusuarios = 20;
         factory(User::class, $cantidadusuarios)->create();
     }
 }

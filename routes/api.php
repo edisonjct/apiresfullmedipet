@@ -16,4 +16,5 @@
 });*/
 
 //Route::apiResource('patiends', 'Patient\PatientController', ['only' => ['index', 'store', 'destroy', 'show', 'update']]);
-Route::apiResource('patiends', 'Patient\PatientController');
+Route::apiResource('patients', 'Patient\PatientController');
+Route::apiResource('users', 'User\UserController');
